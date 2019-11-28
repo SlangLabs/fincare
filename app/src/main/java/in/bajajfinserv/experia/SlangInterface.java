@@ -204,11 +204,6 @@ public class SlangInterface {
         public void onInitialized() {
             Log.d("BuddyListener", "Slang Initialised Successfully");
 
-            try {
-                SlangBuddy.getGreetingMessage().overrideIsSpoken(false);
-            } catch (SlangBuddy.UninitializedUsageException e) {
-                e.printStackTrace();
-            }
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
