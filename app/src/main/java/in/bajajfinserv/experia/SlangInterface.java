@@ -7,7 +7,9 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 import in.slanglabs.platform.SlangBuddy;
 import in.slanglabs.platform.SlangBuddyOptions;
@@ -40,8 +42,8 @@ import in.slanglabs.platform.action.SlangUtteranceAction;
  * from the onResume method of that activity
  */
 public class SlangInterface {
-    private static String sAppId = "8f5d99457b7c4267a2518079d6d8aa5d";
-    private static String sApiKey = "0889ab1a2c014638b6ef9ca6188c2224";
+    private static String sAppId = "fill_app_id";   // "8f5d99457b7c4267a2518079d6d8aa5d";
+    private static String sApiKey = "fill_api_key"; // "0889ab1a2c014638b6ef9ca6188c2224";
     private static Application sApplication;
 
     /****************************************************************
@@ -174,6 +176,7 @@ public class SlangInterface {
                 .setListener(new BuddyListener())
                 .setUtteranceAction(new SlangUtteranceHandler())
                 .setIntentAction(new IntentActionHandler())
+                .setRequestedLocales(getAppLocales())
                 .setRequestedLocales(SlangLocale.getSupportedLocales())
                 .setDefaultLocale(SlangLocale.LOCALE_ENGLISH_IN)
                 // change env to production when the buddy is published to production
@@ -185,6 +188,15 @@ public class SlangInterface {
         } catch (SlangBuddy.InsufficientPrivilegeException e) {
             e.printStackTrace();
         }
+    }
+
+    // Return the required locales
+    private static Set<Locale> getAppLocales() {
+        HashSet<Locale> locales = new HashSet<>(2);
+
+        locales.add(SlangLocale.LOCALE_ENGLISH_IN);
+        locales.add(SlangLocale.LOCALE_HINDI_IN);
+        return locales;
     }
 
     private static class SlangUtteranceHandler implements SlangUtteranceAction {
