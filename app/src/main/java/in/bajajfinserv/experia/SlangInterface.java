@@ -42,8 +42,8 @@ import in.slanglabs.platform.action.SlangUtteranceAction;
  * from the onResume method of that activity
  */
 public class SlangInterface {
-    private static String sAppId = "fill_app_id";   // "8f5d99457b7c4267a2518079d6d8aa5d";
-    private static String sApiKey = "fill_api_key"; // "0889ab1a2c014638b6ef9ca6188c2224";
+    private static String sAppId = "fill_app_id"; 
+    private static String sApiKey = "fill_api_key"; 
     private static Application sApplication;
 
     /****************************************************************
